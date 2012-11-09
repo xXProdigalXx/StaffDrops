@@ -12,10 +12,10 @@ import org.bukkit.inventory.ItemStack;
 public class Legendarys {
 	
 	private CraftItemStack LegendaryItem;
-	private NBTTagCompound tags;
-	private NBTTagCompound display;
 	private String name = "";
 	private String lore = "";
+	private NBTTagCompound tags;
+	private NBTTagCompound display = null;
 
 	public Legendarys(ItemStack is){
 		this(new CraftItemStack(is));
@@ -24,55 +24,60 @@ public class Legendarys {
 	public Legendarys(CraftItemStack cis){
 		LegendaryItem = cis;
 		
-		tags = LegendaryItem.getHandle().tag;
-		
-		if(tags == null){
+		if(cis.getHandle().tag == null){
 			tags = new NBTTagCompound();
+		}
+		else{
+			tags = cis.getHandle().tag;
 		}
 		
 		if(tags.hasKey("Display")){
 			display = new NBTTagCompound();
 		}
-		
-
 	}
 	
-	public void setItemName(String _name){
-		if(tags.hasKey("Name")){
-			name = _name;
-			display.setString("Name", name);
+	public void setItemName(String _name){	
+		if(display != null){
+			if(display.hasKey("Name")){
+				name = _name;
+				display.setString("Name", name);
+			}
 		}
 	}
 	
 	public void setItemRarity(int i){
-		if(tags.hasKey("Name")){
-			switch(i){
-			case 1:
-				name = ChatColor.GREEN + name;
-				setItemName(name);
-				break;
-			case 2:
-				name = ChatColor.BLUE + name;
-				setItemName(name);
-				break;
-			case 3:
-				name = ChatColor.RED + name;
-				setItemName(name);
-				break;
-			case 4: 
-				name =  ChatColor.YELLOW + name;
-				setItemName(name);
-				break;
+		if(display != null){
+			if(display.hasKey("Name")){
+				switch(i){
+				case 1:
+					name = ChatColor.GREEN + name;
+					setItemName(name);
+					break;
+				case 2:
+					name = ChatColor.BLUE + name;
+					setItemName(name);
+					break;
+				case 3:
+					name = ChatColor.RED + name;
+					setItemName(name);
+					break;
+				case 4: 
+					name =  ChatColor.YELLOW + name;
+					setItemName(name);
+					break;
+				}
 			}
 		}
 	}
 	
 	public void setItemLore(String _lore){
-		if(display.hasKey("Lore")){
-			lore = ChatColor.DARK_PURPLE + _lore;
-			NBTTagString temp = new NBTTagString(lore);
-			
-			display.set("Lore", temp);
+		if(display != null){
+			if(display.hasKey("Lore")){
+				lore = ChatColor.DARK_PURPLE + _lore;
+				NBTTagString temp = new NBTTagString(lore);
+				
+				display.set("Lore", temp);
+			}
 		}
 	}
 	

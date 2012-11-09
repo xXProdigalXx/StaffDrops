@@ -216,10 +216,10 @@ public class staffList {
 			
 		}
 		
-		Legendarys temp = new Legendarys(new Skull(name).getItemStack());
-			temp.setItemName(name + "'s skull");
+		Legendarys temp = new Legendarys(jefe_Sword);
+			temp.setItemName("Jefe's Sword");
 			temp.setItemRarity(3);
-			temp.setItemLore("The skull of " + name + ".");
+			temp.setItemLore("This sword is said to be the most powerful sword ever.");
 		
 			sd = temp.getItemStack();
 		
