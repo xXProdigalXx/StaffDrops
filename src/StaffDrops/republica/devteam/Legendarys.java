@@ -12,11 +12,11 @@ import org.bukkit.inventory.ItemStack;
 
 public class Legendarys {
 	
-	private CraftItemStack LegendaryItem;
+	private net.minecraft.server.ItemStack LegendaryItem;
 	private String name = "THERESNOFUCKINGNAMEDIPSHIT";
 	private String lore = "THERESNOFUCKINGLOREDIPSHIT";
 	private NBTTagCompound tags;
-	private NBTTagCompound display = null;
+	private NBTTagCompound display;
 	private NBTTagString _lore;
 	private NBTTagList thisIsFuckingStupid;
 
@@ -25,7 +25,7 @@ public class Legendarys {
 	}
 	
 	public Legendarys(CraftItemStack cis){
-		LegendaryItem = cis;
+		LegendaryItem = cis.getHandle();
 		
 		tags = cis.getHandle().tag;
 		
@@ -38,16 +38,13 @@ public class Legendarys {
 		}
 		if(!tags.hasKey("RepairCost")){
 			tags.setInt("RepairCost", 10000);
-		}
-		if(!tags.hasKey("display")){
-			//display.set("Lore", null);
-			//display.setString("Name", "NoName :(");
-			
-			//tags.setCompound("display", display);
-		}
-		
+		}		
 		if(tags.hasKey("display")){
 			display = tags.getCompound("display");
+			
+			if(display.hasKey("Name")){
+				name = display.getString("name");
+			}
 		}
 		else{
 			display = new NBTTagCompound();
@@ -135,8 +132,10 @@ public class Legendarys {
 	}
 	
 	public ItemStack getItemStack(){
-		LegendaryItem.getHandle().tag = tags;
-		return LegendaryItem;
+		LegendaryItem.setTag(tags);
+		CraftItemStack is = new CraftItemStack(LegendaryItem);
+		
+		return is;
 	}
 	
 }
