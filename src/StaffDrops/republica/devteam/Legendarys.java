@@ -13,8 +13,8 @@ import org.bukkit.inventory.ItemStack;
 public class Legendarys {
 	
 	private CraftItemStack LegendaryItem;
-	private String name = "";
-	private String lore = "";
+	private String name = "THERESNOFUCKINGNAMEDIPSHIT";
+	private String lore = "THERESNOFUCKINGLOREDIPSHIT";
 	private NBTTagCompound tags;
 	private NBTTagCompound display = null;
 	private NBTTagString _lore;
@@ -33,12 +33,27 @@ public class Legendarys {
 			tags = new NBTTagCompound();
 		}
 		
+		if(!tags.hasKey("ench")){
+			//tags.set("ench", null);
+		}
+		if(!tags.hasKey("RepairCost")){
+			tags.setInt("RepairCost", 10000);
+		}
+		if(!tags.hasKey("display")){
+			//display.set("Lore", null);
+			//display.setString("Name", "NoName :(");
+			
+			//tags.setCompound("display", display);
+		}
+		
 		if(tags.hasKey("display")){
 			display = tags.getCompound("display");
 		}
 		else{
 			display = new NBTTagCompound();
 		}
+		
+		thisIsFuckingStupid = new NBTTagList();
 	}
 	
 	public void setItemName(String _name){	
@@ -80,20 +95,27 @@ public class Legendarys {
 		if(display != null){
 			Bukkit.broadcastMessage("It was actually called if that helps...");
 			if(type == "Lore"){
+				lore = ChatColor.DARK_PURPLE + s;
+				_lore = new NBTTagString(lore);
+				thisIsFuckingStupid.add(_lore);
+				thisIsFuckingStupid.setName("Lore");
 				if(display.hasKey("Lore")){//test
 					Bukkit.broadcastMessage("THE LORE IS WORKING DIPSHIT");
-					lore = ChatColor.DARK_PURPLE + s;
-					_lore = new NBTTagString(lore);
-					thisIsFuckingStupid.add(_lore);
 					displayNeedsToGetItsShitTogether(thisIsFuckingStupid, "Lore");
+				}
+				else{
+					display.set("Lore", thisIsFuckingStupid);
 				}
 				
 			}
 			if(type == "Name"){
+				name = s;
 				if(display.hasKey("Name")){//test
 					Bukkit.broadcastMessage("THE NAME IS WORKING DIPSHIT");
-					name = s;
 					displayNeedsToGetItsShitTogether(name, "Name");
+				}
+				else{
+					display.setString("Name", name);
 				}
 			}
 			tags.setCompound("display", display);
@@ -113,6 +135,7 @@ public class Legendarys {
 	}
 	
 	public ItemStack getItemStack(){
+		LegendaryItem.getHandle().tag = tags;
 		return LegendaryItem;
 	}
 	
