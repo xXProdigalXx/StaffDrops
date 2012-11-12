@@ -61,70 +61,120 @@ public class staffList {
 	ItemStack emma1337_DiamondBootsies = new ItemStack(313, 1);//Feather-falling 5
 		Enchantment emma1337_DiamondBootsiesEnchant = new EnchantmentWrapper(2);
 		
-	ItemStack bcuz_PumpkinVision = new ItemStack(91, 1);
-		//No enchantment, only a potion effect
-		
 	//TODO: Make Str8tUpSkillz a legendary
-		
-	ItemStack ragnas_DiamondPick = new ItemStack(278, 1);//Efficiency 5, Unbreaking 3
-		Enchantment ragnas_DiamondPickEnchant1 = new EnchantmentWrapper(32);
-		Enchantment ragnas_DiamondPickEnchant2 = new EnchantmentWrapper(34);
 		
 	//TODO: Make Dt546 a legendary
 		
 	ItemStack xxprodigalxx_Rose = new ItemStack(38, 1);//Fortune 5
 		Enchantment xxprodigalxx_RoseEnchant = new EnchantmentWrapper(35);
+	ItemStack xxprodigalxx_MilkGoggles = new ItemStack(314, 1);
 		
-	ItemStack prodigalSkull;
-	
-	CraftItemStack test = new CraftItemStack(38, 1);	
+	ItemStack theKnowledgeOfMeiskam = new ItemStack(387, 1);
 		
 	Random rand = new Random();
 	
 	public staffList(){ //Possibly nerf a few of these
 		
-		Legendarys JefeSword = new Legendarys(jefe_Sword);
+		staff_Skull.addUnsafeEnchantment(staff_SkullEnchant1, 3);
+		staff_Skull.addUnsafeEnchantment(staff_SkullEnchant2, 3);
+		staff_Skull.addUnsafeEnchantment(staff_SkullEnchant3, 3);
 		
-//		staff_Skull.addEnchantment(staff_SkullEnchant1, 3);
-//		staff_Skull.addEnchantment(staff_SkullEnchant2, 3);
-//		staff_Skull.addEnchantment(staff_SkullEnchant3, 3);
-//		
-//		jefe_Sword.addEnchantment(jefe_SwordEnchant1, 2);
-//		jefe_Sword.addEnchantment(jefe_SwordEnchant2, 3);
-//		
-//		jefe_Helmet.addEnchantment(jefe_HelmetEnchant, 4);
-//		
-//		jefe_ChestPlate.addEnchantment(jefe_ChestPlateEnchant, 4);
-//		
-//		jefe_PlateLegs.addEnchantment(jefe_PlateLegsEnchant, 4);
-//		
-//		jefe_Boots.addEnchantment(jefe_BootsEnchant1, 4);
-//		jefe_Boots.addEnchantment(jefe_BootsEnchant2, 4);
-//		
-//		majorKane_Pick.addEnchantment(majorKane_PickEnchant1, 5);
-//		majorKane_Pick.addEnchantment(majorKane_PickEnchant2, 5);
-//		majorKane_Pick.addEnchantment(majorKane_PickEnchant3, 2);
-//		
-//		majorKane_PimpCane.addEnchantment(majorKane_PimpCaneEnchant, 3);
-//		
-//		supahTree_Sapling.addEnchantment(supahTree_SaplingEnchant, 5);
-//		
-//		supahTree_Stick.addEnchantment(supahTree_StickEnchant, 3);
-//		
-//		mekaj_DoucheBagBow.addEnchantment(mekaj_DoucheBagBowEnchant1, 1);
-//		mekaj_DoucheBagBow.addEnchantment(mekaj_DoucheBagBowEnchant2, 1);
-//		
-//		emma1337_DiamondBootsies.addEnchantment(emma1337_DiamondBootsiesEnchant, 5);
-//		
-//		//TODO: Make Str8tUpSkillz Lengendaries enchanted
-//		
-//		ragnas_DiamondPick.addEnchantment(ragnas_DiamondPickEnchant1, 5);
-//		ragnas_DiamondPick.addEnchantment(ragnas_DiamondPickEnchant2, 3);
-//		
-//		//TODO: Make Dt546's Legendaries enchanted
-//		
-//		xxprodigalxx_Rose.addEnchantment(xxprodigalxx_RoseEnchant, 5);
-	
+		jefe_Sword.addUnsafeEnchantment(jefe_SwordEnchant1, 2);
+		jefe_Sword.addUnsafeEnchantment(jefe_SwordEnchant2, 3);
+		
+		jefe_Helmet.addUnsafeEnchantment(jefe_HelmetEnchant, 4);
+		
+		jefe_ChestPlate.addUnsafeEnchantment(jefe_ChestPlateEnchant, 4);
+		
+		jefe_PlateLegs.addUnsafeEnchantment(jefe_PlateLegsEnchant, 4);
+		
+		jefe_Boots.addUnsafeEnchantment(jefe_BootsEnchant1, 4);
+		jefe_Boots.addUnsafeEnchantment(jefe_BootsEnchant2, 4);
+		
+		majorKane_Pick.addUnsafeEnchantment(majorKane_PickEnchant1, 5);
+		majorKane_Pick.addUnsafeEnchantment(majorKane_PickEnchant2, 5);
+		majorKane_Pick.addUnsafeEnchantment(majorKane_PickEnchant3, 2);
+		
+		majorKane_PimpCane.addUnsafeEnchantment(majorKane_PimpCaneEnchant, 3);
+		
+		supahTree_Sapling.addUnsafeEnchantment(supahTree_SaplingEnchant, 5);
+		
+		supahTree_Stick.addUnsafeEnchantment(supahTree_StickEnchant, 3);
+		
+		mekaj_DoucheBagBow.addUnsafeEnchantment(mekaj_DoucheBagBowEnchant1, 1);
+		mekaj_DoucheBagBow.addUnsafeEnchantment(mekaj_DoucheBagBowEnchant2, 1);
+		
+		emma1337_DiamondBootsies.addUnsafeEnchantment(emma1337_DiamondBootsiesEnchant, 5);
+		
+		//TODO: Make Str8tUpSkillz Lengendaries enchanted
+		
+		//TODO: Make Dt546's Legendaries enchanted
+		
+		xxprodigalxx_Rose.addUnsafeEnchantment(xxprodigalxx_RoseEnchant, 5);
+		
+		Legendarys JefeSword = new Legendarys(jefe_Sword);
+			JefeSword.setItemName("Jefe323's Sword");
+			JefeSword.setItemRarity(4);
+			JefeSword.setItemLore("The sword of Jefe323.");
+			
+		jefe_Sword = JefeSword.getItemStack();
+		
+		Legendarys JefeHelmet = new Legendarys(jefe_Helmet);
+			JefeHelmet.setItemName("Jefe323's Helmet");
+			JefeHelmet.setItemRarity(4);
+			JefeSword.setItemLore("The helmet of Jefe323.");
+		
+		jefe_Helmet = JefeHelmet.getItemStack();
+		
+		Legendarys JefeChestPlate = new Legendarys(jefe_ChestPlate);
+			JefeChestPlate.setItemName("Jefe323's Breastplate");
+			JefeChestPlate.setItemRarity(4);
+			JefeChestPlate.setItemLore("The breastplate of Jefe323.");
+			
+		jefe_ChestPlate = JefeChestPlate.getItemStack();
+		
+		Legendarys JefePlateLegs = new Legendarys(jefe_PlateLegs);
+			JefePlateLegs.setItemName("Jefe323's Platelegs");
+			JefePlateLegs.setItemRarity(4);
+			JefePlateLegs.setItemLore("The Platelegs of Jefe323.");
+			
+		jefe_PlateLegs = JefePlateLegs.getItemStack();
+			
+		Legendarys JefeBoots = new Legendarys(jefe_Boots);
+			JefeBoots.setItemName("Jefe323's Boots");
+			JefeBoots.setItemRarity(4);
+			JefeBoots.setItemLore("The Boots of Jefe323.");
+			
+		jefe_Boots = JefeBoots.getItemStack();
+		
+		Legendarys MajorKanePick = new Legendarys(majorKane_Pick);
+			MajorKanePick.setItemName("MajorKane's ThunderPick");
+			MajorKanePick.setItemRarity(4);
+			MajorKanePick.setItemLore("When the thunder starts a shocking, Its because MajorKane came a knocking.");
+			
+		majorKane_Pick = MajorKanePick.getItemStack();
+		
+		Legendarys MajorKanePimpCane = new Legendarys(majorKane_PimpCane);
+			MajorKanePimpCane.setItemName("The Pimp Kane");
+			MajorKanePimpCane.setItemRarity(4);
+			MajorKanePimpCane.setItemLore("Who doesn't love a good hoe?");
+			
+		majorKane_PimpCane = MajorKanePimpCane.getItemStack();
+		
+		Legendarys SupahTreeSapling = new Legendarys(supahTree_Sapling);
+			SupahTreeSapling.setItemName("SupahSapling");
+			SupahTreeSapling.setItemRarity(4);
+			SupahTreeSapling.setItemLore("You don't want to know where this came from...");
+			
+		supahTree_Sapling = SupahTreeSapling.getItemStack();
+		
+		Legendarys SupahTreeArm = new Legendarys(supahTree_Stick);
+			SupahTreeArm.setItemName("Supah's Right Arm");
+			SupahTreeArm.setItemRarity(4);
+			SupahTreeArm.setItemLore("How did you get this you douche?!?!");
+			
+		supahTree_Stick = SupahTreeArm.getItemStack();
+			
 	}
 	
 	public boolean isStaff(String name){
@@ -191,12 +241,10 @@ public class staffList {
 		} else if(name == staffList[4]){
 			sd = emma1337_DiamondBootsies;
 		} else if(name == staffList[5]){
-			sd = bcuz_PumpkinVision;
 		} else if(name == staffList[6]){
 			//TODO: Str8tUpSkillz's Legendary
 			Bukkit.broadcastMessage(Color.RED + "REMIND XXPRODIGALXX TO MAKE STR8UPSKILLZ A LEGENDARY");
 		} else if(name == staffList[7]){
-			sd = ragnas_DiamondPick;
 		} else if(name == staffList[8]){
 			//TODO: Dt546's Legendary
 			Bukkit.broadcastMessage(Color.RED + "REMIND XXPRODIGALXX TO MAKE DT546 A LEGENDARY");
@@ -207,21 +255,15 @@ public class staffList {
 		randVal = rand.nextInt(5);
 		
 		if(randVal > 2){
-			Legendarys temp = new Legendarys(new Skull(name).getItemStack());
-				temp.setItemName(name + "'s skull");
-				temp.setItemRarity(3);
-				temp.setItemLore("The skull of " + name + ".");
+			Legendarys StaffSkull = new Legendarys(staff_Skull);
+				StaffSkull.setItemName(name + "'s skull");
+				StaffSkull.setItemRarity(3);
+				StaffSkull.setItemLore("The skull of " + name + ".");
+				StaffSkull.setSkullOwner(name);
 				
-			sd = temp.getItemStack();
+			sd = StaffSkull.getItemStack();
 			
 		}
-		
-		Legendarys temp = new Legendarys(jefe_Sword);
-			temp.setItemName("Jefe's Sword");
-			temp.setItemRarity(3);
-			temp.setItemLore("This sword is said to be the most powerful sword ever.");
-		
-			sd = temp.getItemStack();
 		
 		return sd;
 	}

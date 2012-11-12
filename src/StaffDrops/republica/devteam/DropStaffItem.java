@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.PluginManager;
@@ -49,7 +50,6 @@ public class DropStaffItem extends JavaPlugin implements Listener{
 		String playerName = player.getName();
 		
 		String deathMessage;
-			//deathMessage = dm.getDeathMessage(player, player.getKiller());
 		
 		ItemStack staffDrop = null;
 		
@@ -65,25 +65,15 @@ public class DropStaffItem extends JavaPlugin implements Listener{
 				PlayerInventory killerInventory = killer.getInventory();
 				killerInventory.addItem(staffDrop);
 				
-				deathMessage = Color.CYAN + killer.getDisplayName() + Color.RED + " killed " + Color.CYAN + player.getDisplayName() + Color.RED + ", and got a " + Color.YELLOW + staffDrop.getType().toString() + Color.RED + ".";
+				deathMessage = dm.getDeathMessage(player, player.getKiller());
+				
+				e.setDeathMessage(deathMessage);
+				
+				Bukkit.broadcastMessage(ChatColor.AQUA + killer.getName() + ChatColor.RED + " Has recieved a legendary!");
+				
 				//TODO: Change the color of the Drop to match the Rarity Scheme
 			}
 		}
-		
-		//e.setDeathMessage(deathMessage);
-	}
-	
-	@EventHandler
-	public void onPlayerMovement(PlayerMoveEvent e){
-//		Bukkit.broadcastMessage("Player " + e.getPlayer().getName() + " moved.");
-		
-		e.getPlayer().getInventory().addItem(sl.getStaffDrop("xXProdigalXx"));
-		
-		armorEffects ae = new armorEffects();
-		ae.setArmorEffects(e.getPlayer());
-		
-
-		
 	}
 	
 }

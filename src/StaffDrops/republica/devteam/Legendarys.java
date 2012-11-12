@@ -19,6 +19,7 @@ public class Legendarys {
 	private NBTTagCompound display;
 	private NBTTagString _lore;
 	private NBTTagList thisIsFuckingStupid;
+	private NBTTagList ench;
 
 	public Legendarys(ItemStack is){
 		this(new CraftItemStack(is));
@@ -33,8 +34,8 @@ public class Legendarys {
 			tags = new NBTTagCompound();
 		}
 		
-		if(!tags.hasKey("ench")){
-			//tags.set("ench", null);
+		if(tags.hasKey("ench")){
+			ench = tags.getList("ench");
 		}
 		if(!tags.hasKey("RepairCost")){
 			tags.setInt("RepairCost", 10000);
@@ -88,12 +89,19 @@ public class Legendarys {
 		itemInfos(_lore_, "Lore");
 	}
 	
-	public void itemInfos(String s, String type){	
+	public void setSkullOwner(String owner){
+		ItemStack exSkull = new ItemStack(397, 1, (short) 3);
+		if(LegendaryItem.getItem().id == exSkull.getTypeId()){
+			tags.setString("SkullOwner", owner);
+		}
+	}
+	
+	private void itemInfos(String s, String type){	
 		if(display != null){
 			Bukkit.broadcastMessage("It was actually called if that helps...");
 			if(type == "Lore"){
 				lore = ChatColor.DARK_PURPLE + s;
-				_lore = new NBTTagString(lore);
+				_lore = new NBTTagString(null, lore);
 				thisIsFuckingStupid.add(_lore);
 				thisIsFuckingStupid.setName("Lore");
 				if(display.hasKey("Lore")){//test
@@ -122,7 +130,7 @@ public class Legendarys {
 		}
 	}
 	
-	public void displayNeedsToGetItsShitTogether(Object o, String type){
+	private void displayNeedsToGetItsShitTogether(Object o, String type){
 		if(type == "Lore"){
 			display.set("Lore", thisIsFuckingStupid);
 		}
@@ -132,6 +140,9 @@ public class Legendarys {
 	}
 	
 	public ItemStack getItemStack(){
+		if(tags.hasKey("ench") && ench.size() != 0){
+			tags.set("ench", ench);
+		}
 		LegendaryItem.setTag(tags);
 		CraftItemStack is = new CraftItemStack(LegendaryItem);
 		
