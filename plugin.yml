@@ -1,4 +1,8 @@
 name: Staff Drops
 main: StaffDrops.republica.devteam.DropStaffItem
-version: Dev1.0.4
+version: Dev2.0.0
 author: xXProdigalXx
+
+commands:
+   legendary:
+      description: Fuck yml.

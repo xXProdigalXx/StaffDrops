@@ -3,6 +3,7 @@ package StaffDrops.republica.devteam;
 import java.util.Random;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Server;
 import org.bukkit.craftbukkit.inventory.CraftItemStack;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentWrapper;
@@ -50,7 +51,7 @@ public class staffList {
 		Enchantment majorKane_PimpCaneEnchant = new EnchantmentWrapper(21);
 	
 	ItemStack supahTree_Sapling = new ItemStack(6, 1);//Sharpness 5
-		Enchantment supahTree_SaplingEnchant = new EnchantmentWrapper(35);
+		Enchantment supahTree_SaplingEnchant = new EnchantmentWrapper(16);
 	ItemStack supahTree_Stick = new ItemStack(280, 1);//Silk-Touch 3
 		Enchantment supahTree_StickEnchant = new EnchantmentWrapper(33);
 		
@@ -100,8 +101,8 @@ public class staffList {
 		
 		supahTree_Stick.addUnsafeEnchantment(supahTree_StickEnchant, 3);
 		
-		mekaj_DoucheBagBow.addUnsafeEnchantment(mekaj_DoucheBagBowEnchant1, 1);
-		mekaj_DoucheBagBow.addUnsafeEnchantment(mekaj_DoucheBagBowEnchant2, 1);
+		mekaj_DoucheBagBow.addUnsafeEnchantment(mekaj_DoucheBagBowEnchant1, 4);
+		mekaj_DoucheBagBow.addUnsafeEnchantment(mekaj_DoucheBagBowEnchant2, 4);
 		
 		emma1337_DiamondBootsies.addUnsafeEnchantment(emma1337_DiamondBootsiesEnchant, 5);
 		
@@ -121,7 +122,7 @@ public class staffList {
 		Legendarys JefeHelmet = new Legendarys(jefe_Helmet);
 			JefeHelmet.setItemName("Jefe323's Helmet");
 			JefeHelmet.setItemRarity(4);
-			JefeSword.setItemLore("The helmet of Jefe323.");
+			JefeHelmet.setItemLore("The helmet of Jefe323.");
 		
 		jefe_Helmet = JefeHelmet.getItemStack();
 		
@@ -210,16 +211,22 @@ public class staffList {
 		return returnVal;
 	}
 	
-	public ItemStack getStaffDrop(String name){
+	public ItemStack getStaffDrop(String name, boolean playerIsOnline){
+		
+		Bukkit.broadcastMessage(name);
 
 		ItemStack sd = null;
 		int randVal = 0;
 				
-		if(name == null)
+		if(name == null){
+			Bukkit.broadcastMessage(name);
 			return null;
+		}
 		
-		if(name == staffList[0]){
+		if(name.toLowerCase().equals(staffList[0].toLowerCase())){
 			randVal = rand.nextInt(5);
+			
+			Bukkit.broadcastMessage(String.valueOf(randVal));
 			
 			switch(randVal){
 				case 0:
@@ -238,7 +245,7 @@ public class staffList {
 					sd = jefe_Boots;
 					break;
 			}
-		} else if(name == staffList[1]){
+		} else if(name.toLowerCase().equals(staffList[1].toLowerCase())){
 			randVal = rand.nextInt(3);
 			
 			if(randVal <= 2){
@@ -247,7 +254,7 @@ public class staffList {
 			else{
 				sd = majorKane_Pick;
 			}
-		} else if(name == staffList[2]){
+		} else if(name.toLowerCase().equals(staffList[2].toLowerCase())){
 			randVal = rand.nextInt(1);
 			
 			if(randVal == 0){
@@ -256,25 +263,27 @@ public class staffList {
 			else{
 				sd = supahTree_Stick;
 			}
-		} else if(name == staffList[3]){
+		} else if(name.toLowerCase().equals(staffList[3].toLowerCase())){
 			sd = mekaj_DoucheBagBow;
-		} else if(name == staffList[4]){
+		} else if(name.toLowerCase().equals(staffList[4].toLowerCase())){
 			sd = emma1337_DiamondBootsies;
-		} else if(name == staffList[5]){
-		} else if(name == staffList[6]){
+		} else if(name.toLowerCase().equals(staffList[5].toLowerCase())){
+		} else if(name.toLowerCase().equals(staffList[6].toLowerCase())){
 			//TODO: Str8tUpSkillz's Legendary
 			Bukkit.broadcastMessage(Color.RED + "REMIND XXPRODIGALXX TO MAKE STR8UPSKILLZ A LEGENDARY");
-		} else if(name == staffList[7]){
-		} else if(name == staffList[8]){
+		} else if(name.toLowerCase().equals(staffList[7].toLowerCase())){
+		} else if(name.toLowerCase().equals(staffList[8].toLowerCase())){
 			//TODO: Dt546's Legendary
 			Bukkit.broadcastMessage(Color.RED + "REMIND XXPRODIGALXX TO MAKE DT546 A LEGENDARY");
-		} else if(name == staffList[9]){
+		} else if(name.toLowerCase().equals(staffList[9].toLowerCase())){
 			sd = xxprodigalxx_Rose;
+		} else {
+			sd = new ItemStack(0, 1);
 		}
 		
 		randVal = rand.nextInt(5);
 		
-		if(randVal > 2){
+		if(randVal > 2 && playerIsOnline){
 			Legendarys StaffSkull = new Legendarys(staff_Skull);
 				StaffSkull.setItemName(name + "'s skull");
 				StaffSkull.setItemRarity(3);
@@ -284,6 +293,8 @@ public class staffList {
 			sd = StaffSkull.getItemStack();
 			
 		}
+		
+		Bukkit.broadcastMessage(sd.toString());
 		
 		return sd;
 	}

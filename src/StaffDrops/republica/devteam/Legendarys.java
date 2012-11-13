@@ -55,7 +55,7 @@ public class Legendarys {
 	}
 	
 	public void setItemName(String _name){	
-		Bukkit.broadcastMessage("Item name was called");
+		//Bukkit.broadcastMessage("Item name was called");
 		itemInfos(_name, "Name");
 	}
 	
@@ -85,7 +85,7 @@ public class Legendarys {
 	}
 	
 	public void setItemLore(String _lore_){
-		Bukkit.broadcastMessage("Item lore was called");
+		//Bukkit.broadcastMessage("Item lore was called");
 		itemInfos(_lore_, "Lore");
 	}
 	
@@ -98,14 +98,14 @@ public class Legendarys {
 	
 	private void itemInfos(String s, String type){	
 		if(display != null){
-			Bukkit.broadcastMessage("It was actually called if that helps...");
+			//Bukkit.broadcastMessage("It was actually called if that helps...");
 			if(type == "Lore"){
 				lore = ChatColor.DARK_PURPLE + s;
 				_lore = new NBTTagString(null, lore);
 				thisIsFuckingStupid.add(_lore);
 				thisIsFuckingStupid.setName("Lore");
 				if(display.hasKey("Lore")){//test
-					Bukkit.broadcastMessage("THE LORE IS WORKING DIPSHIT");
+					//Bukkit.broadcastMessage("THE LORE IS WORKING DIPSHIT");
 					displayNeedsToGetItsShitTogether(thisIsFuckingStupid, "Lore");
 				}
 				else{
@@ -116,7 +116,7 @@ public class Legendarys {
 			if(type == "Name"){
 				name = s;
 				if(display.hasKey("Name")){//test
-					Bukkit.broadcastMessage("THE NAME IS WORKING DIPSHIT");
+					//Bukkit.broadcastMessage("THE NAME IS WORKING DIPSHIT");
 					displayNeedsToGetItsShitTogether(name, "Name");
 				}
 				else{
