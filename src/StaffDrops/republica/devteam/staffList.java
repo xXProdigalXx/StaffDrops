@@ -67,7 +67,6 @@ public class staffList {
 		
 	ItemStack xxprodigalxx_Rose = new ItemStack(38, 1);//Fortune 5
 		Enchantment xxprodigalxx_RoseEnchant = new EnchantmentWrapper(35);
-	ItemStack xxprodigalxx_MilkGoggles = new ItemStack(314, 1);
 		
 	ItemStack theKnowledgeOfMeiskam = new ItemStack(387, 1);
 		
@@ -174,6 +173,27 @@ public class staffList {
 			SupahTreeArm.setItemLore("How did you get this you douche?!?!");
 			
 		supahTree_Stick = SupahTreeArm.getItemStack();
+		
+		Legendarys MekajBow = new Legendarys(mekaj_DoucheBagBow);
+			MekajBow.setItemName("Mekaj's bow of douchbaggery");
+			MekajBow.setItemRarity(4);
+			MekajBow.setItemLore("This isn't overpowered at all...");
+			
+		mekaj_DoucheBagBow = MekajBow.getItemStack();
+		
+		Legendarys EmmaBootsies = new Legendarys(emma1337_DiamondBootsies);
+			EmmaBootsies.setItemName("Emma1337's Diamond Bootsies");
+			EmmaBootsies.setItemRarity(4);
+			EmmaBootsies.setItemLore("How did you get these? She never takes them off.");
+			
+		emma1337_DiamondBootsies = EmmaBootsies.getItemStack();
+		
+		Legendarys ProdigalRose = new Legendarys(xxprodigalxx_Rose);
+			ProdigalRose.setItemName("xXProdigalXx's Rose of Faggotry");
+			ProdigalRose.setItemRarity(4);
+			ProdigalRose.setItemLore("Seriously, what kind of straight man carries roses on him?");
+			
+		xxprodigalxx_Rose = ProdigalRose.getItemStack();
 			
 	}
 	
