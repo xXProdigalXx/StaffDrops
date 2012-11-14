@@ -77,9 +77,8 @@ public class DropStaffItem extends JavaPlugin implements Listener{
 			
 			if(rand.nextInt(5) == 3){
 				Player killer = player.getKiller();
-				Location temp = player.getLocation();
 				
-				killer.getWorld().dropItemNaturally(temp, staffDrop);
+				killer.getInventory().addItem(staffDrop);
 				
 				deathMessage = dm.getDeathMessage(player, player.getKiller());
 				

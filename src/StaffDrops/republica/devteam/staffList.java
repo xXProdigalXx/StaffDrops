@@ -202,7 +202,7 @@ public class staffList {
 		boolean returnVal = false;
 		
 		for(String sl : staffList){
-			if(name == sl){
+			if(name.equalsIgnoreCase(sl)){
 				returnVal = true;
 				break;
 			}
@@ -212,16 +212,9 @@ public class staffList {
 	}
 	
 	public ItemStack getStaffDrop(String name, boolean playerIsOnline){
-		
-		Bukkit.broadcastMessage(name);
 
 		ItemStack sd = null;
 		int randVal = 0;
-				
-		if(name == null){
-			Bukkit.broadcastMessage(name);
-			return null;
-		}
 		
 		if(name.toLowerCase().equals(staffList[0].toLowerCase())){
 			randVal = rand.nextInt(5);
@@ -293,9 +286,6 @@ public class staffList {
 			sd = StaffSkull.getItemStack();
 			
 		}
-		
-		Bukkit.broadcastMessage(sd.toString());
-		
 		return sd;
 	}
 	
