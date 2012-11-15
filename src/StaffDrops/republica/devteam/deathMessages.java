@@ -166,11 +166,73 @@ public class deathMessages {
 				rs = "a mushroom";
 				break;
 			case 41:
-				rs = "temp";
+				rs = "a block of gold";
 				break;
 			case 42:
-				rs = "temp";
+				rs = "a block of iron";
 				break;
+			case 43:
+				rs = "slabs";
+				break;
+			case 44:
+				rs = "slabs";
+				break;
+			case 45:
+				rs = "bricks";
+				break;
+			case 46:
+				rs = "TNT";
+				break;
+			case 47:
+				rs = "bookcase";
+				break;
+			case 48:
+				rs = "moss stone";
+				break;
+			case 49:
+				rs = "obsidian";
+				break;
+			case 50:
+				rs = "torch";
+				break;
+			case 51:
+				rs = "fire..";
+				break;
+			case 52:
+				rs = "mob spawner..";
+				break;
+			case 53:
+				rs = "wooden stairs";
+				break;
+			case 54:
+				rs = "a chest";
+				break;
+			case 55:
+				rs = "redstone wire";
+				break;
+			case 56:
+				rs = "diamond ore";
+				break;
+			case 57:
+				rs = "a diamond block";
+				break;
+			case 58:
+				rs = "a workbench";
+				break;
+			case 59:
+				rs = "wheat";
+				break;
+			case 60:
+				rs = "farmland..";
+				break;
+			case 61:
+				rs = "furnace";
+				break;
+			case 62:
+				rs = "furnace";
+				break;
+			
+				
 		}
 		
 		return rs.toLowerCase();
