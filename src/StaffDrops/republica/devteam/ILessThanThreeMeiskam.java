@@ -16,14 +16,14 @@ public class ILessThanThreeMeiskam {
 	private String title = "Ode to Meiskam";
 	private String author = "xXProdigalXx";
 	
-	private String pI = "\t This is a book just for meiskam, " +
+	private String pI = "        This is a book just for meiskam, " +
 			"because he dealt with my shit in the BukkitDev IRC, " +
 			"even though he didn't have to. He wrote a good half " +
 			"of this plugin, and in the time it took me to make this " +
 			"he wrote an entire functioning plugin just to achieve " +
-			"the same thing I was going for, and provide " +
-			"documentation for this aspect of minecraft.";
-	private String pII = "\t He will always have a special " +
+			"the same thing I was going for, and provide ";
+	private String pII = "documentation for this aspect of minecraft." + 
+			"        He will always have a special " +
 			"place in my heart. He made me a better plugin " +
 			"developer, and sat through constant pestering " +
 			"by some random kid (me). And so, that is why " +
