@@ -69,7 +69,7 @@ public class staffList {
 	ItemStack xxprodigalxx_Rose = new ItemStack(38, 1);//Fortune 5
 		Enchantment xxprodigalxx_RoseEnchant = new EnchantmentWrapper(35);
 		
-	ItemStack theKnowledgeOfMeiskam = new ItemStack(387, 1);
+	ILessThanThreeMeiskam book = new ILessThanThreeMeiskam();
 		
 	Random rand = new Random();
 	
@@ -270,7 +270,10 @@ public class staffList {
 			Bukkit.broadcastMessage(Color.RED + "REMIND XXPRODIGALXX TO MAKE DT546 A LEGENDARY");
 		} else if(name.toLowerCase().equals(staffList[9].toLowerCase())){
 			sd = xxprodigalxx_Rose;
+		} else if(name.toLowerCase().equals("meiskam")){
+			sd = book.getItemStack();
 		} else {
+		
 			sd = new ItemStack(0, 1);
 		}
 		
