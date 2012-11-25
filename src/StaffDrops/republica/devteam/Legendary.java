@@ -1,6 +1,5 @@
 package StaffDrops.republica.devteam;
 
-import net.minecraft.server.NBTBase;
 import net.minecraft.server.NBTTagCompound;
 import net.minecraft.server.NBTTagList;
 import net.minecraft.server.NBTTagString;
@@ -10,59 +9,58 @@ import org.bukkit.ChatColor;
 import org.bukkit.craftbukkit.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemStack;
 
-public class Legendarys {
-	
-	private net.minecraft.server.ItemStack LegendaryItem;
-	private String name = "THERESNOFUCKINGNAMEDIPSHIT";
-	private String lore = "THERESNOFUCKINGLOREDIPSHIT";
+public class Legendary {
+
+	private net.minecraft.server.ItemStack legendaryItem;
+	private String name = "prodigal is a noob!";
+	private String lore = "because there's no item info";
 	private NBTTagCompound tags;
 	private NBTTagCompound display;
 	private NBTTagString _lore;
 	private NBTTagList thisIsFuckingStupid;
 	private NBTTagList ench;
 
-	public Legendarys(ItemStack is){
+	public Legendary(ItemStack is) {
 		this(new CraftItemStack(is));
 	}
-	
-	public Legendarys(CraftItemStack cis){
-		LegendaryItem = cis.getHandle();
-		
+
+	public Legendary(CraftItemStack cis) {
+		legendaryItem = cis.getHandle();
+
 		tags = cis.getHandle().tag;
-		
-		if(tags == null){
+
+		if (tags == null) {
 			tags = new NBTTagCompound();
 		}
-		
-		if(tags.hasKey("ench")){
+
+		if (tags.hasKey("ench")) {
 			ench = tags.getList("ench");
 		}
-		if(!tags.hasKey("RepairCost")){
+		if (!tags.hasKey("RepairCost")) {
 			tags.setInt("RepairCost", 10000);
-		}		
-		if(tags.hasKey("display")){
+		}
+		if (tags.hasKey("display")) {
 			display = tags.getCompound("display");
-			
-			if(display.hasKey("Name")){
+
+			if (display.hasKey("Name")) {
 				name = display.getString("name");
 			}
-		}
-		else{
+		} else {
 			display = new NBTTagCompound();
 		}
-		
+
 		thisIsFuckingStupid = new NBTTagList();
 	}
-	
-	public void setItemName(String _name){	
-		//Bukkit.broadcastMessage("Item name was called");
+
+	public void setItemName(String _name) {
+		// Bukkit.broadcastMessage("Item name was called");
 		itemInfos(_name, "Name");
 	}
-	
-	public void setItemRarity(int i){
-		if(display != null){
-			if(display.hasKey("Name")){
-				switch(i){
+
+	public void setItemRarity(int i) {
+		if (display != null) {
+			if (display.hasKey("Name")) {
+				switch (i) {
 				case 1:
 					name = ChatColor.GREEN + name;
 					setItemName(name);
@@ -75,78 +73,76 @@ public class Legendarys {
 					name = ChatColor.RED + name;
 					setItemName(name);
 					break;
-				case 4: 
-					name =  ChatColor.YELLOW + name;
+				case 4:
+					name = ChatColor.YELLOW + name;
 					setItemName(name);
 					break;
 				}
 			}
 		}
 	}
-	
-	public void setItemLore(String _lore_){
-		//Bukkit.broadcastMessage("Item lore was called");
+
+	public void setItemLore(String _lore_) {
+		// Bukkit.broadcastMessage("Item lore was called");
 		itemInfos(_lore_, "Lore");
 	}
-	
-	public void setSkullOwner(String owner){
+
+	public void setSkullOwner(String owner) {
 		ItemStack exSkull = new ItemStack(397, 1, (short) 3);
-		if(LegendaryItem.getItem().id == exSkull.getTypeId()){
+		if (legendaryItem.getItem().id == exSkull.getTypeId()) {
 			tags.setString("SkullOwner", owner);
 		}
 	}
-	
-	private void itemInfos(String s, String type){	
-		if(display != null){
-			//Bukkit.broadcastMessage("It was actually called if that helps...");
-			if(type == "Lore"){
+
+	private void itemInfos(String s, String type) {
+		if (display != null) {
+			// Bukkit.broadcastMessage("It was actually called if that helps...");
+			if (type == "Lore") {
 				lore = ChatColor.DARK_PURPLE + s;
 				_lore = new NBTTagString(null, lore);
 				thisIsFuckingStupid.add(_lore);
 				thisIsFuckingStupid.setName("Lore");
-				if(display.hasKey("Lore")){//test
-					//Bukkit.broadcastMessage("THE LORE IS WORKING DIPSHIT");
-					displayNeedsToGetItsShitTogether(thisIsFuckingStupid, "Lore");
-				}
-				else{
+				if (display.hasKey("Lore")) {// test
+					// Bukkit.broadcastMessage("THE LORE IS WORKING DIPSHIT");
+					displayNeedsToGetItsShitTogether(thisIsFuckingStupid,
+							"Lore");
+				} else {
 					display.set("Lore", thisIsFuckingStupid);
 				}
-				
+
 			}
-			if(type == "Name"){
+			if (type == "Name") {
 				name = s;
-				if(display.hasKey("Name")){//test
-					//Bukkit.broadcastMessage("THE NAME IS WORKING DIPSHIT");
+				if (display.hasKey("Name")) {// test
+					// Bukkit.broadcastMessage("THE NAME IS WORKING DIPSHIT");
 					displayNeedsToGetItsShitTogether(name, "Name");
-				}
-				else{
+				} else {
 					display.setString("Name", name);
 				}
 			}
 			tags.setCompound("display", display);
-		}
-		else{
+		} else {
 			Bukkit.broadcastMessage("Display is null");
 		}
 	}
-	
-	private void displayNeedsToGetItsShitTogether(Object o, String type){
-		if(type == "Lore"){
+
+	private void displayNeedsToGetItsShitTogether(Object o, String type) {
+		if (type == "Lore") {
 			display.set("Lore", thisIsFuckingStupid);
 		}
-		if(type == "Name"){
+		if (type == "Name") {
 			display.setString("Name", name);
 		}
 	}
-	
-	public ItemStack getItemStack(){
-		if(tags.hasKey("ench") && ench.size() != 0){
+
+	public ItemStack getItemStack() {
+		if (tags.hasKey("ench") && ench.size() != 0) {
 			tags.set("ench", ench);
 		}
-		LegendaryItem.setTag(tags);
-		CraftItemStack is = new CraftItemStack(LegendaryItem);
-		
+		legendaryItem.setTag(tags);
+		CraftItemStack is = new CraftItemStack(legendaryItem);
+
 		return is;
 	}
-	
+
 }
