@@ -1,9 +1,9 @@
 package StaffDrops.republica.devteam;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 
@@ -12,6 +12,8 @@ public class StaffList {
 	private final String[] staffList = { "Jefe323", "MajorKane", "SupahTree",
 			"Mekaj", "Emma1337", "Bcuz", "Str8tUpSkillz", "Ragnas", "Dt546",
 			"xXProdigalXx" };// TODO: Make array constant
+	
+	private HashMap<String, ArrayList<ItemStack>> legendaries = new HashMap<String, ArrayList<ItemStack>>();
 
 	// TODO: Name each item
 
@@ -36,7 +38,7 @@ public class StaffList {
 	private ItemStack majorKanePimpCane = new ItemStack(294, 1);// Looting 3
 
 	private ItemStack supahTreeSapling = new ItemStack(6, 1);// Sharpness 5
-	private ItemStack supahTreeStick = new ItemStack(280, 1);// Silk-Touch 3
+	private ItemStack supahTreeStick = new ItemStack(280, 1);// Silk-Touch 1
 
 	private ItemStack mekajBow = new ItemStack(261, 1);// Infinity 1, Flame 1
 
@@ -47,16 +49,24 @@ public class StaffList {
 
 	// TODO: Make Dt546 a legendary
 
-	private ItemStack completeLoserRose = new ItemStack(38, 1);// Fortune 5
+	private ItemStack completeLoserRose = new ItemStack(38, 1);// Fortune 5 doesn't exist so 3
 
 	private ILessThanThreeMeiskam book = new ILessThanThreeMeiskam();
 
 	private Random rand = new Random();
+	
+	private ItemStack addInfo(ItemStack item, String name, int rarity, String lore) {
+		Legendary itemLegendary = new Legendary(item);
+		itemLegendary.setItemName(name);
+		itemLegendary.setItemRarity(rarity);
+		itemLegendary.setItemLore(lore);
+		return itemLegendary.getItemStack();
+	}
 
 	public StaffList() { // Possibly nerf a few of these
-
+		// possibly also buff mekaj's bow to match the lore for it
 		staffSkull.addUnsafeEnchantment(Enchantment.OXYGEN, 3);
-		staffSkull.addUnsafeEnchantment(Enchantment.WATER_WORKER, 3);
+		staffSkull.addUnsafeEnchantment(Enchantment.WATER_WORKER, 1);
 		staffSkull.addUnsafeEnchantment(Enchantment.LOOT_BONUS_BLOCKS, 3);
 
 		jefeSword.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 2);
@@ -79,108 +89,59 @@ public class StaffList {
 
 		supahTreeSapling.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 5);
 
-		supahTreeStick.addUnsafeEnchantment(Enchantment.SILK_TOUCH, 3);
+		supahTreeStick.addUnsafeEnchantment(Enchantment.SILK_TOUCH, 1);
 
-		mekajBow.addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 4);
-		mekajBow.addUnsafeEnchantment(Enchantment.ARROW_FIRE, 4);
+		mekajBow.addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1);
+		mekajBow.addUnsafeEnchantment(Enchantment.ARROW_FIRE, 1);
 
 		emma1337Boots.addUnsafeEnchantment(
-				Enchantment.PROTECTION_FALL, 5);
+				Enchantment.PROTECTION_FALL, 4);
 
 		// TODO: Make Str8tUpSkillz Lengendaries enchanted
 
 		// TODO: Make Dt546's Legendaries enchanted
 
-		completeLoserRose.addUnsafeEnchantment(Enchantment.LOOT_BONUS_BLOCKS, 5);
+		completeLoserRose.addUnsafeEnchantment(Enchantment.LOOT_BONUS_BLOCKS, 3);
 
-		Legendary JefeSword = new Legendary(jefeSword);
-		JefeSword.setItemName("Jefe323's Sword");
-		JefeSword.setItemRarity(4);
-		JefeSword.setItemLore("The sword of Jefe323.");
+		jefeSword = addInfo(jefeSword, "Jefe323's Sword", 4, "The sword of Jefe323.");
 
-		jefeSword = JefeSword.getItemStack();
+		jefeHelmet = addInfo(jefeHelmet, "Jefe323's Helmet", 4, "The helmet of Jefe323.");
 
-		Legendary JefeHelmet = new Legendary(jefeHelmet);
-		JefeHelmet.setItemName("Jefe323's Helmet");
-		JefeHelmet.setItemRarity(4);
-		JefeHelmet.setItemLore("The helmet of Jefe323.");
+		jefeChestPlate = addInfo(jefeChestPlate, "Jefe323's Breastplate", 4, "The breastplate of Jefe323.");
 
-		jefeHelmet = JefeHelmet.getItemStack();
+		jefeLeggings = addInfo(jefeLeggings, "Jefe323's Platelegs", 4, "The Platelegs of Jefe323.");
 
-		Legendary JefeChestPlate = new Legendary(jefeChestPlate);
-		JefeChestPlate.setItemName("Jefe323's Breastplate");
-		JefeChestPlate.setItemRarity(4);
-		JefeChestPlate.setItemLore("The breastplate of Jefe323.");
+		jefeBoots = addInfo(jefeBoots, "Jefe323's Boots", 4, "The Boots of Jefe323.");
 
-		jefeChestPlate = JefeChestPlate.getItemStack();
+		majorKanePick = addInfo(majorKanePick, "MajorKane's ThunderPick", 4, "When the thunder starts a shocking, Its because MajorKane came a knocking.");
 
-		Legendary JefePlateLegs = new Legendary(jefeLeggings);
-		JefePlateLegs.setItemName("Jefe323's Platelegs");
-		JefePlateLegs.setItemRarity(4);
-		JefePlateLegs.setItemLore("The Platelegs of Jefe323.");
+		majorKanePimpCane = addInfo(majorKanePimpCane, "The Pimp Kane", 4, "Who doesn't love a good hoe?");
 
-		jefeLeggings = JefePlateLegs.getItemStack();
+		supahTreeSapling = addInfo(supahTreeSapling, "SupahSapling", 4, "You don't want to know where this came from...");
 
-		Legendary JefeBoots = new Legendary(jefeBoots);
-		JefeBoots.setItemName("Jefe323's Boots");
-		JefeBoots.setItemRarity(4);
-		JefeBoots.setItemLore("The Boots of Jefe323.");
+		supahTreeStick = addInfo(supahTreeStick, "Supah's Right Arm", 4, "How did you get this you douche?!?!");
 
-		jefeBoots = JefeBoots.getItemStack();
+		mekajBow = addInfo(mekajBow, "Mekaj's bow of douchbaggery", 4, "This isn't overpowered at all...");
 
-		Legendary MajorKanePick = new Legendary(majorKanePick);
-		MajorKanePick.setItemName("MajorKane's ThunderPick");
-		MajorKanePick.setItemRarity(4);
-		MajorKanePick
-				.setItemLore("When the thunder starts a shocking, Its because MajorKane came a knocking.");
+		emma1337Boots = addInfo(emma1337Boots, "Emma1337's Diamond Bootsies", 4, "How did you get these? She never takes them off.");
 
-		majorKanePick = MajorKanePick.getItemStack();
-
-		Legendary MajorKanePimpCane = new Legendary(majorKanePimpCane);
-		MajorKanePimpCane.setItemName("The Pimp Kane");
-		MajorKanePimpCane.setItemRarity(4);
-		MajorKanePimpCane.setItemLore("Who doesn't love a good hoe?");
-
-		majorKanePimpCane = MajorKanePimpCane.getItemStack();
-
-		Legendary SupahTreeSapling = new Legendary(supahTreeSapling);
-		SupahTreeSapling.setItemName("SupahSapling");
-		SupahTreeSapling.setItemRarity(4);
-		SupahTreeSapling
-				.setItemLore("You don't want to know where this came from...");
-
-		supahTreeSapling = SupahTreeSapling.getItemStack();
-
-		Legendary SupahTreeArm = new Legendary(supahTreeStick);
-		SupahTreeArm.setItemName("Supah's Right Arm");
-		SupahTreeArm.setItemRarity(4);
-		SupahTreeArm.setItemLore("How did you get this you douche?!?!");
-
-		supahTreeStick = SupahTreeArm.getItemStack();
-
-		Legendary MekajBow = new Legendary(mekajBow);
-		MekajBow.setItemName("Mekaj's bow of douchbaggery");
-		MekajBow.setItemRarity(4);
-		MekajBow.setItemLore("This isn't overpowered at all...");
-
-		mekajBow = MekajBow.getItemStack();
-
-		Legendary EmmaBootsies = new Legendary(emma1337Boots);
-		EmmaBootsies.setItemName("Emma1337's Diamond Bootsies");
-		EmmaBootsies.setItemRarity(4);
-		EmmaBootsies
-				.setItemLore("How did you get these? She never takes them off.");
-
-		emma1337Boots = EmmaBootsies.getItemStack();
-
-		Legendary ProdigalRose = new Legendary(completeLoserRose);
-		ProdigalRose.setItemName("xXProdigalXx's Rose of Faggotry");
-		ProdigalRose.setItemRarity(4);
-		ProdigalRose
-				.setItemLore("Seriously, what kind of straight man carries roses on him?");
-
-		completeLoserRose = ProdigalRose.getItemStack();
-
+		completeLoserRose = addInfo(completeLoserRose, "xXProdigalXx's Rose of Faggotry", 4, "Seriously, what kind of straight man carries roses on him?");
+		
+		add("Jefe323", jefeSword, jefeHelmet, jefeChestPlate, jefeLeggings, jefeBoots);
+		add("MajorKane", majorKanePick, majorKanePimpCane);
+		add("SupahTree", supahTreeSapling, supahTreeStick);
+		add("Mekaj", mekajBow);
+		add("Emma1337", emma1337Boots);
+		add("xXProdigalXx", completeLoserRose);
+		add("meiskam", book.getItemStack()); // this may or may not be useful
+	}
+	
+	private void add(String user, ItemStack... itemStacks) {
+		ArrayList<ItemStack> items = new ArrayList<ItemStack>();
+		for (ItemStack i : itemStacks) {
+			items.add(i);
+		}
+		legendaries.put(user.toLowerCase(), items);
 	}
 
 	public boolean isStaff(String name) {
@@ -195,90 +156,34 @@ public class StaffList {
 
 		return returnVal;
 	}
-
-	public ItemStack getStaffDrop(String name, boolean playerIsOnline) {
-
-		ItemStack sd = null;
-		int randVal = 0;
-
-		if (name.toLowerCase().equals(staffList[0].toLowerCase())) {
-			randVal = rand.nextInt(5);
-
-			Bukkit.broadcastMessage(String.valueOf(randVal));
-
-			switch (randVal) {
-			case 0:
-				sd = jefeSword;
-				break;
-			case 1:
-				sd = jefeHelmet;
-				break;
-			case 2:
-				sd = jefeChestPlate;
-				break;
-			case 3:
-				sd = jefeLeggings;
-				break;
-			case 4:
-				sd = jefeBoots;
-				break;
-			}
-		} else if (name.toLowerCase().equals(staffList[1].toLowerCase())) {
-			randVal = rand.nextInt(3);
-
-			if (randVal <= 2) {
-				sd = majorKanePimpCane;
-			} else {
-				sd = majorKanePick;
-			}
-		} else if (name.toLowerCase().equals(staffList[2].toLowerCase())) {
-			randVal = rand.nextInt(1);
-
-			if (randVal == 0) {
-				sd = supahTreeSapling;
-			} else {
-				sd = supahTreeStick;
-			}
-		} else if (name.toLowerCase().equals(staffList[3].toLowerCase())) {
-			sd = mekajBow;
-		} else if (name.toLowerCase().equals(staffList[4].toLowerCase())) {
-			sd = emma1337Boots;
-		} else if (name.toLowerCase().equals(staffList[5].toLowerCase())) {
-		} else if (name.toLowerCase().equals(staffList[6].toLowerCase())) {
-			// TODO: Str8tUpSkillz's Legendary
-			Bukkit.broadcastMessage(ChatColor.RED
-					+ "REMIND XXPRODIGALXX TO MAKE STR8UPSKILLZ A LEGENDARY");
-		} else if (name.toLowerCase().equals(staffList[7].toLowerCase())) {
-		} else if (name.toLowerCase().equals(staffList[8].toLowerCase())) {
-			// TODO: Dt546's Legendary
-			Bukkit.broadcastMessage(ChatColor.RED
-					+ "REMIND XXPRODIGALXX TO MAKE DT546 A LEGENDARY");
-		} else if (name.toLowerCase().equals(staffList[9].toLowerCase())) {
-			sd = completeLoserRose;
-		} else if (name.toLowerCase().equals("meiskam")) {
-			sd = book.getItemStack();
-		} else {
-
-			sd = new ItemStack(0, 1);
+	
+	public ArrayList<ItemStack> getAllItems() {
+		ArrayList<ItemStack> result = new ArrayList<ItemStack>();
+		for (ArrayList<ItemStack> items : legendaries.values()) {
+			result.addAll(items);
 		}
+		return result;
+	}
+	
+	public ItemStack decideFor(ArrayList<ItemStack> items) {
+		int randVal = rand.nextInt(items.size());
+		return items.get(randVal);
+	}
 
-		randVal = rand.nextInt(5);
+	public ItemStack getStaffDrop(String playerName, boolean playerIsOnline) {
+		String name = playerName.toLowerCase();
+		if (!legendaries.containsKey(name)) return new ItemStack(0, 1);
+		
+		ItemStack sd = decideFor(legendaries.get(name));
 
-		if (randVal > 2 && playerIsOnline) {
-			Legendary StaffSkull = new Legendary(staffSkull);
-			StaffSkull.setItemName(name + "'s skull");
-			StaffSkull.setItemRarity(3);
-			StaffSkull.setItemLore("The skull of " + name + ".");
-			StaffSkull.setSkullOwner(name);
-
-			sd = StaffSkull.getItemStack();
+		if (rand.nextInt(5) > 2 && playerIsOnline) {
+			sd = addInfo(staffSkull, playerName + "'s skull", 3, "The skull of " + playerName + ".");
+			Legendary usefulSkull = new Legendary(sd);
+			usefulSkull.setSkullOwner(playerName);
+			sd = usefulSkull.getItemStack();
 
 		}
 		return sd;
-	}
-
-	public ItemStack getStaffSkull() {
-		return staffSkull;
 	}
 
 }
