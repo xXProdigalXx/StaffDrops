@@ -5,6 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 public class LegendaryCommandExecutor implements CommandExecutor {
 
@@ -24,9 +25,17 @@ public class LegendaryCommandExecutor implements CommandExecutor {
 
 		if (cmd.getName().equalsIgnoreCase("legendary")) {
 			if (p.isOp()) {
-				p.getInventory().addItem(
-						sl.getStaffDrop(args[0],
-								plugin.getPlayerIsOnline(args[0])));
+				if (args[0].equals("all")) {
+					for (ItemStack is : sl.getAllItems()) {
+						p.getInventory().addItem(is);
+					}
+				} else {
+					boolean playerIsOnline = plugin.getPlayerIsOnline(args[0]);
+					playerIsOnline = true; // this is for debugging anyways, right?
+					p.getInventory().addItem(
+							sl.getStaffDrop(args[0],
+									playerIsOnline));
+				}
 			}
 		}
 
